@@ -21,7 +21,7 @@ export type Organization = {
   name: string;
 };
 
-type NavItemProps = {
+interface NavItemProps {
   isExpanded: boolean;
   isActive: boolean;
   organization: Organization;
