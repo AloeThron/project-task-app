@@ -9,9 +9,9 @@ import { InputType, ReturnType } from "./types";
 import { CreateBoard } from "./schema";
 import { db } from "@/lib/database";
 import { createSafeAction } from "@/lib/create-safe-action";
-// import { incrementAvailableCount, hasAvailableCount } from "@/lib/org-limit";
-// import { createAuditLog } from "@/lib/create-audit-log";
-// import { checkSubscription } from "@/lib/subscription";
+import { incrementAvailableCount, hasAvailableCount } from "@/lib/org-limit";
+import { createAuditLog } from "@/lib/create-audit-log";
+import { checkSubscription } from "@/lib/subscription";
 
 async function handler(data: InputType): Promise<ReturnType> {
   const { userId, orgId } = auth();
@@ -53,16 +53,16 @@ async function handler(data: InputType): Promise<ReturnType> {
       }
     });
 
-    // if (!isPro) {
-    //  await incrementAvailableCount();
-    // }
+    if (!isPro) {
+     await incrementAvailableCount();
+    }
 
-    // await createAuditLog({
-    //   entityTitle: board.title,
-    //   entityId: board.id,
-    //   entityType: ENTITY_TYPE.BOARD,
-    //   action: ACTION.CREATE,
-    // })
+    await createAuditLog({
+      entityTitle: board.title,
+      entityId: board.id,
+      entityType: ENTITY_TYPE.BOARD,
+      action: ACTION.CREATE,
+    })
 
   } catch (error) {
     return {
