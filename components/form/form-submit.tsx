@@ -19,12 +19,12 @@ interface FormSubmitProps {
     | "primary";
 }
 
-export const FormSubmit = ({
+export function FormSubmit({
   children,
   disabled,
   className,
   variant = "primary",
-}: FormSubmitProps) => {
+}: FormSubmitProps) {
   const { pending } = useFormStatus();
 
   return (
@@ -38,4 +38,4 @@ export const FormSubmit = ({
       {children}
     </Button>
   );
-};
+}
