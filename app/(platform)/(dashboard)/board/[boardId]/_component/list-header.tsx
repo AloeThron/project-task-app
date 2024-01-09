@@ -6,7 +6,7 @@ import { useEventListener } from "usehooks-ts";
 import { useState, useRef, ElementRef } from "react";
 
 import { useAction } from "@/hooks/use-action";
-import { updateList } from "@/actions/update-list";
+import { updateList } from "@/lib/actions/update-list";
 import { FormInput } from "@/components/form/form-input";
 
 import { ListOptions } from "./list-options";

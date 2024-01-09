@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { Plus, X } from "lucide-react";
 
 import { useAction } from "@/hooks/use-action";
-import { createCard } from "@/actions/create-card";
+import { createCard } from "@/lib/actions/create-card";
 import { Button } from "@/components/ui/button";
 import { FormSubmit } from "@/components/form/form-submit";
 import { FormTextarea } from "@/components/form/form-textarea";

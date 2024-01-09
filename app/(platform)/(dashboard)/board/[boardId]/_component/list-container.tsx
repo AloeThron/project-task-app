@@ -4,10 +4,10 @@ import { toast } from "sonner";
 import { useEffect, useState } from "react";
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 
-import { ListWithCards } from "@/types";
+import { ListWithCards } from "@/types/types";
 import { useAction } from "@/hooks/use-action";
-import { updateListOrder } from "@/actions/update-list-order";
-import { updateCardOrder } from "@/actions/update-card-order";
+import { updateListOrder } from "@/lib/actions/update-list-order";
+import { updateCardOrder } from "@/lib/actions/update-card-order";
 
 import { ListForm } from "./list-form";
 import { ListItem } from "./list-item";

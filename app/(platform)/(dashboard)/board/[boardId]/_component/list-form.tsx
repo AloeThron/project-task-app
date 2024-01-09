@@ -9,7 +9,7 @@ import { Plus, X } from "lucide-react";
 
 import { useAction } from "@/hooks/use-action";
 import { Button } from "@/components/ui/button";
-import { createList } from "@/actions/create-list";
+import { createList } from "@/lib/actions/create-list";
 import { FormInput } from "@/components/form/form-input";
 import { FormSubmit } from "@/components/form/form-submit";
 import { ListWrapper } from "./list-wrapper";

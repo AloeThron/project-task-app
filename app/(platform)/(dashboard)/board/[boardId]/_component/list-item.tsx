@@ -5,10 +5,10 @@ import { ElementRef, useRef, useState } from "react";
 import { Draggable, Droppable } from "@hello-pangea/dnd";
 
 import { cn } from "@/lib/utils";
-import { ListWithCards } from "@/types";
 import { CardForm } from "./card-form";
 import { CardItem } from "./card-item";
 import { ListHeader } from "./list-header";
+import { ListWithCards } from "@/types/types";
 
 interface ListItemProps {
   data: ListWithCards;
