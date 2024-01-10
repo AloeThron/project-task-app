@@ -3,12 +3,10 @@
 import { revalidatePath } from "next/cache";
 
 import { auth, currentUser } from "@clerk/nextjs";
-import { ACTION, ENTITY_TYPE } from "@prisma/client";
 
 import { StripeRedirect } from "./schema";
 import { InputType, ReturnType } from "./types";
 import { db } from "@/lib/database";
-import { createAuditLog } from "@/lib/create-audit-log";
 import { createSafeAction } from "@/lib/create-safe-action";
 import { absoluteUrl } from "@/lib/utils";
 import { stripe } from "@/lib/stripe";
