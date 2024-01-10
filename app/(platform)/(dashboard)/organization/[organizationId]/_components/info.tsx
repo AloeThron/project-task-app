@@ -17,6 +17,7 @@ export function Info({ isPro }: InfoProps) {
   // if (!isLoaded) {
   //   return <Info.Skeleton />;
   // }
+  console.log(organization, isLoaded);
 
   return (
     <div className="flex items-center gap-x-4">
