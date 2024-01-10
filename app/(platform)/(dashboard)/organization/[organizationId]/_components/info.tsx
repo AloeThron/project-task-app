@@ -6,24 +6,30 @@ import { CreditCard } from "lucide-react";
 import { useOrganization } from "@clerk/nextjs";
 
 import { Skeleton } from "@/components/ui/skeleton";
+import { useEffect } from "react";
 
 interface InfoProps {
   isPro: boolean;
 }
 
 export function Info({ isPro }: InfoProps) {
-
-
   const { organization, isLoaded } = useOrganization();
 
-  if (!organization) {
-    console.log("organization, isLoaded");
-  }
+  console.log(organization, isLoaded);
+
+  useEffect(() => {
+    const time = setTimeout(() => {
+        if (!organization) {
+        window.location.reload();
+      }
+    }, 5000);
+
+    clearTimeout(time)
+  });
 
   if (!isLoaded) {
     return <Info.Skeleton />;
   }
-  console.log(organization, isLoaded);
 
   return (
     <div className="flex items-center gap-x-4">
