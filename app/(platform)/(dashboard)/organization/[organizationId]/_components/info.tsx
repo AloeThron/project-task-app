@@ -14,9 +14,9 @@ interface InfoProps {
 export function Info({ isPro }: InfoProps) {
   const { organization, isLoaded } = useOrganization();
 
-  if (!isLoaded) {
-    return <Info.Skeleton />;
-  }
+  // if (!isLoaded) {
+  //   return <Info.Skeleton />;
+  // }
 
   return (
     <div className="flex items-center gap-x-4">
@@ -37,7 +37,7 @@ export function Info({ isPro }: InfoProps) {
       </div>
     </div>
   );
-};
+}
 
 Info.Skeleton = function SkeletonInfo() {
   return (
