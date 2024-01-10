@@ -22,19 +22,30 @@ async function handler(data: InputType): Promise<ReturnType> {
     };
   }
 
+  const canCreate = await hasAvailableCount();
+  const isPro = await checkSubscription();
+
+  if (!canCreate && !isPro) {
+    return {
+      error:
+        "You have reached your limit of free boards. Please upgrade to create more.",
+    };
+  }
+
   const { title, image } = data;
 
-  const [
-    imageId,
-    imageThumbUrl,
-    imageFullUrl,
-    imageLinkHTML,
-    imageUserName
-  ] = image.split("|");
+  const [imageId, imageThumbUrl, imageFullUrl, imageLinkHTML, imageUserName] =
+    image.split("|");
 
-  if (!imageId || !imageThumbUrl || !imageFullUrl || !imageUserName || !imageLinkHTML) {
+  if (
+    !imageId ||
+    !imageThumbUrl ||
+    !imageFullUrl ||
+    !imageUserName ||
+    !imageLinkHTML
+  ) {
     return {
-      error: "Missing fields. Failed to create board."
+      error: "Missing fields. Failed to create board.",
     };
   }
 
@@ -50,11 +61,11 @@ async function handler(data: InputType): Promise<ReturnType> {
         imageFullUrl,
         imageUserName,
         imageLinkHTML,
-      }
+      },
     });
 
     if (!isPro) {
-     await incrementAvailableCount();
+      await incrementAvailableCount();
     }
 
     await createAuditLog({
@@ -62,17 +73,15 @@ async function handler(data: InputType): Promise<ReturnType> {
       entityId: board.id,
       entityType: ENTITY_TYPE.BOARD,
       action: ACTION.CREATE,
-    })
-
+    });
   } catch (error) {
     return {
-      error: "Failed to create."
-    }
+      error: "Failed to create.",
+    };
   }
 
   revalidatePath(`/board/${board.id}`);
   return { data: board };
-};
+}
 
 export const createBoard = createSafeAction(CreateBoard, handler);
-
