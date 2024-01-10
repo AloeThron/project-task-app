@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 
+import { auth, clerkClient, useOrganization } from "@clerk/nextjs";
 import { CreditCard } from "lucide-react";
-import { useOrganization } from "@clerk/nextjs";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { useEffect } from "react";
@@ -19,17 +19,17 @@ export function Info({ isPro }: InfoProps) {
 
   useEffect(() => {
     const time = setTimeout(() => {
-        if (!organization) {
+      if (!organization) {
         window.location.reload();
       }
     }, 5000);
 
-    clearTimeout(time)
+    clearTimeout(time);
   });
 
-  if (!isLoaded) {
-    return <Info.Skeleton />;
-  }
+  // if (!isLoaded) {
+  //   return <Info.Skeleton />;
+  // }
 
   return (
     <div className="flex items-center gap-x-4">

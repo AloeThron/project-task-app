@@ -32,6 +32,9 @@ export default function Sidebar({ storageKey = "sidebar-state" }: Props) {
     },
   });
 
+  console.log(activeOrganization, isLoadedOrg);
+  console.log(userMemberships, isLoadedOrgList);
+
   // ใช้ฟังก์ชัน Object.keys() เพื่อรับคีย์ทั้งหมดของวัตถุ expanded จากนั้นโค้ดจะเรียกใช้ฟังก์ชัน reduce() เพื่อวนซ้ำผ่านคีย์ทั้งหมดของวัตถุ expanded ฟังก์ชัน reduce() จะได้รับอาร์เรย์ว่างเป็นค่าเริ่มต้นสำหรับตัวแปร acc และจะเพิ่มคีย์ key ใน expanded ลงในอาร์เรย์ acc
   const defaultAccordionValue: string[] = Object.keys(expanded).reduce(
     (acc: string[], key: string) => {
@@ -55,7 +58,7 @@ export default function Sidebar({ storageKey = "sidebar-state" }: Props) {
   if (!isLoadedOrg || !isLoadedOrgList || userMemberships.isLoading) {
     return (
       <>
-        <div className="flex items-center justify-between mb-2">
+        {/* <div className="flex items-center justify-between mb-2">
           <Skeleton className="h-10 w-[50%]" />
           <Skeleton className="h-10 w-10" />
         </div>
@@ -63,7 +66,7 @@ export default function Sidebar({ storageKey = "sidebar-state" }: Props) {
           <NavItem.Skeleton />
           <NavItem.Skeleton />
           <NavItem.Skeleton />
-        </div>
+        </div> */}
       </>
     );
   }
